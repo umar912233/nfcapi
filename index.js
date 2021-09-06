@@ -47,6 +47,7 @@ app.post('/register',(req,res,next)=>{
     var name = req.body.name;
     var email = req.body.email;
     var password = req.body.password;
+    console.log(email);
     mysqlConnection.query('SELECT * FROM users WHERE email="'+email+'"',(err,rows,fields)=>{
         if(rows.length > 0)
             res.send({
@@ -219,6 +220,7 @@ app.post('/uploadaudio', upload.single('audio_url'), (req, res, next) => {
                 {
                     message:'Audio Uploaded In Database',
                     status: true
+
                 }
             );
         else
